@@ -88,9 +88,8 @@ submitBtn.addEventListener("click", () => {
 
   if (answer) {
     if (answer === quizData[currentQuestion].correct) {
-      score++;
+        score++;
     }
-
     currentQuestion++;
 
     if (currentQuestion > quizData.length) {
