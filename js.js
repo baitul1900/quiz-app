@@ -45,6 +45,8 @@ const c_text = document.getElementById("c_text");
 const d_text = document.getElementById("d_text");
 const submitBtn = document.getElementById("submit");
 
+let score = 0;
+let currentQuestion = 0;
 // deselect all check ans for just extra click
 const deselectAnswer = () => {
   answerEls.forEach((answerEl) => {
@@ -53,8 +55,7 @@ const deselectAnswer = () => {
 };
 
 // store the current qus and score to be updated by function
-const score = 0;
-const currentQuestion = 0;
+
 
 loadQuiz();
 function loadQuiz() {
@@ -77,7 +78,7 @@ function checkAnswer() {
     if (answerEl.checked) {
       answer = answerEl.id;
     }
-  });
+  })
 
   return answer;
 }
@@ -88,16 +89,16 @@ submitBtn.addEventListener("click", () => {
 
   if (answer) {
     if (answer === quizData[currentQuestion].correct) {
-        score++;
+      score++;
     }
     currentQuestion++;
 
-    if (currentQuestion > quizData.length) {
+    if (currentQuestion < quizData.length) {
       loadQuiz();
     } else {
       quiz.innerHTML = `<h2>You answered correctly at ${score}/${quizData.length} questions.</h2> 
             
-            <button onclick="location.reload()">Reload</button>`;
+            <button onclick="location.reload()">Reload</button>`
     }
   }
 });
